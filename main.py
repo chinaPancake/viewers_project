@@ -15,10 +15,16 @@ directories = ["img", "pdf_documents","compressed_files","music", "videos", "she
 
 # check list of the directories insied of the existing folder, if directory is already created ask user for changeing the name of directory or for skipping renaming. 
 
+# we need an option for a user to create their specified folders so they can specify file extensions that gonna be moved to the specified directory
 
 def test_destination_directory(self):
     self.assertTrue(Path('path').exists())
-
+ext = '.py'
 for i in directories:
     path = Path(i).resolve()
     path.mkdir(exist_ok = True)
+    if path.exists():
+        print(path)
+        for f in path.parents[0].glob('*.jpg'):
+            f.replace(path)
+
