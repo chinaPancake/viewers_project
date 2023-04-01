@@ -7,9 +7,19 @@ extensions = {
     '.gif': 'gifs',
     '.pdf': 'pdf_documents',
     '.txt': 'text',
+    '.mp3': 'recordings_and_videos',
+    '.mp4': 'recordings_and_videos',
+    '.mov': 'recordings_and_videos',
+    '.csv':'sheets_and_excel',
+    '.xlsx':'sheets_and_excel',
+    '.xml':'sheets_and_excel',
     '.docx': 'documents',
+    '.odt': 'documents',
+    '.zip': 'compressed_files',
+    '.exe': 'installer_and_exe_files',
     # Add more extensions and directories as needed
 }
+
 
 src_dir = Path.cwd()
 
