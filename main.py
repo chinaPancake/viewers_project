@@ -1,30 +1,34 @@
 from pathlib import Path
+extensions = {
+    '.jpg': 'images',
+    '.png': 'images',
+    '.jpeg': 'images',
+    '.jfif':'images',
+    '.gif': 'gifs',
+    '.pdf': 'pdf_documents',
+    '.txt': 'text',
+    '.docx': 'documents',
+    # Add more extensions and directories as needed
+}
 
-import os
+src_dir = Path.cwd()
 
-img_directory = "img"
+for file in src_dir.glob("*"):
+    if file.is_file():
+        ext = file.suffix.lower()
+        if ext in extensions:
+            dest_dir = Path(extensions[ext])
+            dest_dir.mkdir(exist_ok=True)
 
-directories = ["img", "pdf_documents","compressed_files","music", "videos", "sheets", "txt_documents"]
+            new_path = dest_dir / file.name
+            file.rename(new_path)
 
 # img - .jpg .png .jpeg .gif .jfif .tiff .tif .heic .jpe .bmp .dip .dcm .dng .eps .exr .heif .ico .nef .psd .raw .tga .webp .xcf
 # pdf_documents .pdf_documents
 # compressed_files: .zip .rar .7z .tar .cab .bzip2 .arj 
 
-
 #todo
 
 # check list of the directories insied of the existing folder, if directory is already created ask user for changeing the name of directory or for skipping renaming. 
 
-# we need an option for a user to create their specified folders so they can specify file extensions that gonna be moved to the specified directory
-
-def test_destination_directory(self):
-    self.assertTrue(Path('path').exists())
-ext = '.py'
-for i in directories:
-    path = Path(i).resolve()
-    path.mkdir(exist_ok = True)
-    if path.exists():
-        print(path)
-        for f in path.parents[0].glob('*.jpg'):
-            f.replace(path)
 
